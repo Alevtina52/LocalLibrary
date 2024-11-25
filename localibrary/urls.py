@@ -24,4 +24,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('catalog/', include('catalog.urls')),
     path('', RedirectView.as_view(url='/catalog/', permanent=True)),
+    path('catalog/', include('catalog.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('catalog/', include('catalog.urls')),  # Предполагается, что ваше приложение называется 'catalog'
+    path('accounts/', include('django.contrib.auth.urls')), # Эта строка очень важна
+]
